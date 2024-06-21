@@ -2,8 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public class Splash extends JFrame{
+public class Splash extends JFrame implements Runnable{
 
+	
+	Thread t;
 	Splash() {
 		// TODO Auto-generated constructor stub
 		ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/first.jpg"));
@@ -12,9 +14,31 @@ public class Splash extends JFrame{
 		JLabel image = new JLabel(i3);
 		add(image);
 		
-		setLocation(500,100);
-		setSize(600, 600);
+		t = new Thread(this);
+		t.start();
+		
 		setVisible(true);
+		
+		int x = 1;
+		for (int i=2; i<=600; i+=4, x+=1) {
+			setLocation(600-((i+x)/2), 350-(i/2));
+			setSize(i + 3*x,i+x/2);
+			
+			try {
+				Thread.sleep(10);
+			}catch (Exception e) {}
+						
+		}
+		
+	}
+	
+	public void run() {
+		try {
+			Thread.sleep(5000);
+			setVisible(false);
+		}catch(Exception e) {
+			
+		}
 	}
 
 	public static void main(String[] args) {
