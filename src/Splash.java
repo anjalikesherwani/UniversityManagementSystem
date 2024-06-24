@@ -1,5 +1,7 @@
 import javax.swing.*;
+
 import java.awt.*;
+
 
 
 public class Splash extends JFrame implements Runnable{
@@ -36,6 +38,10 @@ public class Splash extends JFrame implements Runnable{
 		try {
 			Thread.sleep(5000);
 			setVisible(false);
+			
+			//Next Frame
+			new Login();
+			
 		}catch(Exception e) {
 			
 		}
