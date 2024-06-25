@@ -62,14 +62,15 @@ public class Login extends JFrame implements ActionListener{
             String username = tfusername.getText();
             String password = tfpassword.getText();
             
-            String query = "select * from login where username='"+username+"' and password='"+password+"'";
+            String sql = "select * from login where username='"+username+"' and password='"+password+"'";
             
             try {
-                
-                Connection c = new Connection();
+//            	Connection c = DriverManager.getConnection("jdbc:mysql://127.0.0.1/universitymanagementsystem","root","");
+//        		System.out.println("connected" + c);
+                conn c = new conn();
 				Statement st = c.createStatement();
                 
-                ResultSet rs = st.executeQuery(query);
+                ResultSet rs = st.executeQuery(sql);
                 
                 if (rs.next()) {
                     setVisible(false);

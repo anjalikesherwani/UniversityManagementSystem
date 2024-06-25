@@ -137,7 +137,7 @@ public class Project extends JFrame implements ActionListener{
         
         //Exit
         JMenu exit= new JMenu("Exit");
-        exit.setForeground(Color.BLUE);
+        exit.setForeground(Color.BLUE); 
         mb.add(exit);
         
         JMenuItem ex = new JMenuItem("Exit");
