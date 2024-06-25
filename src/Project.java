@@ -1,8 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 
-public class Project extends JFrame {
+public class Project extends JFrame implements ActionListener{
 	
 	
 
@@ -70,7 +71,7 @@ public class Project extends JFrame {
         leavedetails.add(facultyleavedetails);
         		
         JMenuItem studentleavedetails = new JMenuItem("Student Leave Details");
-        facultyleavedetails.setBackground(Color.white);
+        studentleavedetails.setBackground(Color.white);
         leavedetails.add(studentleavedetails);
         
         
@@ -88,28 +89,91 @@ public class Project extends JFrame {
         exam.add(entermarks);
         
         
-      //UpdateInfo
+        //UpdateInfo
         JMenu updateInfo = new JMenu("Update Information");
         updateInfo.setForeground(Color.BLUE);
         mb.add(updateInfo);
         
         JMenuItem updatefacultyinfo = new JMenuItem("Update Faculty Details");
-        examinationdetaits.setBackground(Color.white);
+        updatefacultyinfo.setBackground(Color.white);
         updateInfo.add(updatefacultyinfo);
         		
         JMenuItem updatestudentinfo = new JMenuItem("Update Student Details");
-        entermarks.setBackground(Color.white);
+        updatestudentinfo.setBackground(Color.white);
         updateInfo.add(updatestudentinfo);
         
         
+        
+        //Fee
+        JMenu fee= new JMenu("Fee Details");
+        fee.setForeground(Color.BLUE);
+        mb.add(fee);
+        
+        JMenuItem feestructure = new JMenuItem("Fee Structure");
+        feestructure.setBackground(Color.white);
+        fee.add(feestructure);
+        		
+        JMenuItem feeform = new JMenuItem("Student Fee Form");
+        feeform.setBackground(Color.white);
+        fee.add(feeform);
+        
+        
+        //Utility
+        JMenu utility= new JMenu("Utility");
+        utility.setForeground(Color.BLUE);
+        mb.add(utility);
+        
+        JMenuItem notepad = new JMenuItem("Notepad");
+        notepad.setBackground(Color.white);
+        notepad.addActionListener(this);
+        utility.add(notepad);
+        		
+        JMenuItem calc = new JMenuItem("Calculator");
+        calc.setBackground(Color.white);
+        calc.addActionListener(this);
+        utility.add(calc);
+        
+        
+        
+        //Exit
+        JMenu exit= new JMenu("Exit");
+        exit.setForeground(Color.BLUE);
+        mb.add(exit);
+        
+        JMenuItem ex = new JMenuItem("Exit");
+        ex.setBackground(Color.white);
+        ex.addActionListener(this);
+        exit.add(ex);
+        
+       
+        
         setJMenuBar(mb);
 		
-		setVisible(true);
+		setVisible(true);		
 		
 		
+	}
+	
+	
+	public void actionPerformed(ActionEvent ae) {
+		String msg = ae.getActionCommand();
 		
-		
-		
+		if (msg.equals("Exit")) {
+			setVisible(false);
+		}else if (msg.equals("Calculator")) {
+			try {
+				Runtime.getRuntime().exec("calc.exe");
+			}catch(Exception e) {
+				
+			}
+			
+		}else if (msg.equals("Notepad")) {
+			try {
+				Runtime.getRuntime().exec("notepad.exe");
+			}catch(Exception e) {
+				
+			}
+		}
 	}
 
 	public static void main(String[] args) {

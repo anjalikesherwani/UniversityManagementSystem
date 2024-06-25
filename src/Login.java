@@ -1,5 +1,3 @@
-
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -64,23 +62,26 @@ public class Login extends JFrame implements ActionListener{
             String username = tfusername.getText();
             String password = tfpassword.getText();
             
-//            String query = "select * from login where username='"+username+"' and password='"+password+"'";
-//            
-//            try {
-//                Conn c = new Conn();
-//                ResultSet rs = c.s.executeQuery(query);
-//                
-//                if (rs.next()) {
-//                    setVisible(false);
-//                    new Project();
-//                } else {
-//                    JOptionPane.showMessageDialog(null, "Invalid username or password");
-//                    setVisible(false);
-//                }
-//                
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
+            String query = "select * from login where username='"+username+"' and password='"+password+"'";
+            
+            try {
+                
+                Connection c = new Connection();
+				Statement st = c.createStatement();
+                
+                ResultSet rs = st.executeQuery(query);
+                
+                if (rs.next()) {
+                    setVisible(false);
+                    new Project();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Invalid username or password");
+                    setVisible(false);
+                }
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } else if (ae.getSource() == cancel) {
             setVisible(false);
         }
